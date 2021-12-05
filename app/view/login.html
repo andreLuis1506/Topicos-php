@@ -7,17 +7,20 @@
           <div class="field">
             <label for="" class="label">Usuario</label>
             <div class="control">
-              <input type="text" class="input">
+              <input type="text" class="input" name="login">
             </div>
           </div>
           <div class="field">
             <label for="" class="label">Senha</label>
             <div class="control">
-              <input type="password" class="input">
+              <input type="password" class="input" name="password">
             </div>
           </div>
           <button class="button is-primary">Logar</button>
         </form>
+        {% if error %}
+        <p class="mt-4 has-text-danger">{{ error }}</p>
+        {% endif %}
       </div>
     </div>  
   </div>

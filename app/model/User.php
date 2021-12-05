@@ -10,7 +10,7 @@ class User{
   private $status;
   private $pin;
 
-  public static function auth(){
+  public function auth(){
     $connection = Connection::getConnection();
     $sql = "SELECT * FROM usuario WHERE login = :login";
     $sql = $connection->prepare($sql);
@@ -21,7 +21,7 @@ class User{
       $result = $sql->fetch();
 
       if($result['senha'] === $this->password){
-        $_SESSION['usr'] = $this->id;
+        $_SESSION['id'] = $result['id'];
         return true;
       }
     }
