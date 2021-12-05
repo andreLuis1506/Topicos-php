@@ -22,6 +22,8 @@ class User{
 
       if($result['senha'] === $this->password){
         $_SESSION['id'] = $result['id'];
+        $_SESSION['login'] = $result['login'];
+        $_SESSION['email'] = $result['email'];
         return true;
       }
     }

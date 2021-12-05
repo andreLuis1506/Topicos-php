@@ -20,9 +20,11 @@ class LoginController{
       $user->setLogin($_POST['login']);
       $user->setPassword($_POST['password']);
       $user->auth();
+
+      $perfil = new PerfilController;
       $params = array();
       
-      $content = $this->index($params);
+      $content = $perfil->index($params);
       
       echo $content;
       

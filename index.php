@@ -5,6 +5,7 @@ require_once 'app/lib/database/Connection.php';
 
 require_once 'app/controller/ErrorController.php';
 require_once 'app/controller/LoginController.php';
+require_once 'app/controller/PerfilController.php';
 
 require_once 'app/model/User.php';
 
