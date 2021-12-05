@@ -1,6 +1,36 @@
 <?php
 
 class User{
+  private $id;
+  private $login;
+  private $email;
+  private $passaword;
+  private $created;
+  private $lastAcess;
+  private $status;
+  private $pin;
+
+  public static function auth(){
+    $connection = Connection::getConnection();
+    $sql = "SELECT * FROM usuario WHERE login = :login";
+    $sql = $connection->prepare($sql);
+    $sql->bindValue(':login', $this->login);
+    $sql->execute();
+
+    if($sql->rowCount()){
+      $result = $sql->fetch();
+
+      if($result['senha'] === $this->password){
+        $_SESSION['usr'] = $this->id;
+        return true;
+      }
+    }
+    
+    throw new Exception("Usuario não encontrado");
+
+  }
+  
+
   public static function getAll(){
     $connection = Connection::getConnection();
     $sql = "SELECT * FROM usuario ORDER BY id DESC";

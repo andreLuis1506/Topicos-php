@@ -12,6 +12,22 @@ class LoginController{
 
   }
 
+  public function login(){
+    try{
+      $user = new User;
+      $user->setLogin($_POST['login']);
+      $user->setPassword($_POST['password']);
+      $user->auth();
+
+      $this->index();
+    }
+    catch(Exception $e){
+      echo $e->getMessage();
+      header('location: http://localhost/');
+
+    }
+  }
+
   public function listUsers(){
     try {
       $users = User::getALL();
