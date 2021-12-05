@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+  apache:
+    build: .
+    container_name: apache-server
+    restart: 'no'
+    ports:
+      - '80:80'
+    volumes:
+      - ./:/var/www/html
+    depends_on:
+      - mysqldb
+    links:
+      - mysqldb
+        
+  mysqldb:
+    container_name: db
+    image: mysql:latest
+    restart: 'no'
+    ports:
+      - '3306:3306'
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=aula-php
+
+  app:
+      depends_on:
+       - mysqldb
+      image: phpmyadmin/phpmyadmin
+      container_name: app
+      restart: 'no'
+      volumes:
+        - ./custom/phpmyadmin/theme:/www/themes/theme
+      ports:
+       - '8080:80'
+      environment:
+        PMA_HOST: mysqldb
