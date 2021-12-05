@@ -4,7 +4,7 @@ abstract class connection {
   private static $connection; 
   public static function getConnection(){
     if(self::$connection == null){
-      self::$connection  = new PDO('mysql:host=mysqldb;port=3306;dbname=aula-php', 'root', 'root');
+      self::$connection  = new PDO('mysql:host=mysqldb;port=3306;dbname=aula_php', 'root', 'root');
     }
 
     return self::$connection;
