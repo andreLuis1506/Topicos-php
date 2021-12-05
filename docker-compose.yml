@@ -16,13 +16,13 @@ services:
         
   mysqldb:
     container_name: db
-    image: mysql:latest
+    build: database/.
     restart: 'no'
     ports:
       - '3306:3306'
     environment:
       - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=aula-php
+      - MYSQL_DATABASE=aula_php
 
   app:
       depends_on:
