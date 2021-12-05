@@ -8,6 +8,8 @@ require_once 'app/controller/LoginController.php';
 
 require_once 'app/model/User.php';
 
+require_once 'vendor/autoload.php';
+
 $template = file_get_contents('app/template/template.html');
 
 ob_start();
