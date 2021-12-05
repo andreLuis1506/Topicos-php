@@ -4,12 +4,16 @@ class User{
   public static function getAll(){
     $connection = Connection::getConnection();
     $sql = "SELECT * FROM usuario ORDER BY id DESC";
-    $connection->prepare(sql);
-    $connection->exec();
+    $sql = $connection->prepare($sql);
+    $sql->execute();
 
     $result = array();
     while($row = $sql->fetchObject('User')){
       $result[] = $row;
+    }
+
+    if(!$result){
+      throw new Exception("Não foi encontrado nenhum usario.");
     }
 
     return $result;
