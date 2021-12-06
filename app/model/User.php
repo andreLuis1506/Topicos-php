@@ -21,9 +21,12 @@ class User{
       $result = $sql->fetch();
 
       if($result['senha'] === $this->password){
+        var_dump($result);
         $_SESSION['id'] = $result['id'];
         $_SESSION['login'] = $result['login'];
         $_SESSION['email'] = $result['email'];
+        $_SESSION['created'] = $result['criacao'];
+        $_SESSION['lastAcess'] = $result['ultimo_acesso'];
         return true;
       }
     }

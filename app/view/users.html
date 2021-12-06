@@ -9,7 +9,14 @@
         <li><a href="http://localhost/?pagina=module">Modulos</a></li>
       </ul>
     </div>
+    {% if users == false %}
+    <div>
+      <p class="subtitle">Lista de modulos</p>
+      <p class="has-text-grey-light">Nehum usuario encontrado...</p>
+    </div>
+    {% endif %} 
 
+    {% if users %}
     <div>
       <p class="subtitle">Lista de usuarios</p>
       <ul>
@@ -32,5 +39,6 @@
       </ul>
       <a href="" class="button is-primary mt-5">Adicionar ususario</a>
     </div>
+    {% endif %}
   </div>
 </section>
