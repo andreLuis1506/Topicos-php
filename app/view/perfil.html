@@ -3,11 +3,11 @@
     
     <div class="tabs">
       <ul>
-        <li class="is-active">Perfil</li>
-        {% if login == 'andre' %}
-        <li><a href="">Usuarios</a></li>
+        <li class="is-active"> <a href="#">Perfil</a> </li>
+        {% if login == 'admin' %}
+        <li><a href="http://localhost/?pagina=users">Usuarios</a></li>
         {% endif %}
-        <li><a href="">Modulos</a></li>
+        <li><a href="http://localhost/?pagina=module">Modulos</a></li>
       </ul>
     </div>
     

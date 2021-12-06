@@ -9,9 +9,12 @@ require_once 'app/controller/ErrorController.php';
 require_once 'app/controller/LoginController.php';
 require_once 'app/controller/PerfilController.php';
 require_once 'app/controller/UsersController.php';
+require_once 'app/controller/ModuleController.php';
+
 
 
 require_once 'app/model/User.php';
+require_once 'app/model/Module.php';
 
 require_once 'vendor/autoload.php';
 
