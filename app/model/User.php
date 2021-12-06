@@ -12,20 +12,24 @@ class User{
 
   public function auth(){
     $connection = Connection::getConnection();
-    $sql = "SELECT * FROM usuario WHERE login = :login";
+    $sql = "SELECT * FROM usuario WHERE login = :login LIMIT 1";
     $sql = $connection->prepare($sql);
     $sql->bindValue(':login', $this->login);
     $sql->execute();
 
+    
+
     if($sql->rowCount()){
       $result = $sql->fetch();
       if(password_verify($this->password, $result['senha'])){
-        var_dump($result);
+        $dateNow = date("Y-m-d H:i:s");
+        $sql = "UPDATE `usuario` SET `ultimo_acesso` = '" . $dateNow . "' WHERE `usuario`.`id` = " . $result['id'] . " ";
+        $sql = $connection->prepare($sql);
+        $sql->execute();
         $_SESSION['id'] = $result['id'];
         $_SESSION['login'] = $result['login'];
         $_SESSION['email'] = $result['email'];
         $_SESSION['created'] = $result['criacao'];
-        $_SESSION['lastAcess'] = $result['ultimo_acesso'];
         return true;
       }
     }
@@ -51,7 +55,17 @@ class User{
     return $result;
   }
 
+  public function create(){
+    $connection = Connection::getConnection();
 
+    $sql = "INSERT INTO `usuario` (`login`, `senha`, `criacao`, `email`, `status`, `senha_assinatura`) VALUES ('$this->login', '$this->password', CURRENT_TIMESTAMP, '$this->email', '1', '$this->pin') ";
+    $sql = $connection->prepare($sql);
+    $sql->execute();
+  }
+
+  public function logout() {
+    # code...
+  }
 
   //get n set 
   public function setlogin($login){
@@ -87,5 +101,13 @@ class User{
     return $this->status;
   }
 
+   
+  public function setPin($pin) {
+    $this->$pin = $pin;
+  }
+
+  public function getPin($pin) {
+    return $this->$pin;
+  }
 
 }
