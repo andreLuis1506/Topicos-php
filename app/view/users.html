@@ -23,13 +23,13 @@
         {% for user in users %}
         <li>
           <p>
-            <div class="columns box" style="width: 30rem;">
+            <div class="columns box" style="width: 35rem;">
               <div class="column is-7">
                 <strong>{{user.login}}</strong>
               </div>
-              <div class="column is-5">
+              <div class="column is-7">
                 <a href="" class="button is-small is-info ml-5">Editar</a>
-                <a href="" class="button is-small is-danger ml-2">Excluir</a>
+                <a href="" class="button is-small is-danger ml-2">Ativar/Desativar</a>
               </div>
             </div>
           </p>
@@ -37,7 +37,7 @@
         </li>
         {% endfor %}
       </ul>
-      <a href="" class="button is-primary mt-5">Adicionar ususario</a>
+      <a href="http://localhost/?pagina=addUser" class="button is-primary mt-5">Adicionar ususario</a>
     </div>
     {% endif %}
   </div>

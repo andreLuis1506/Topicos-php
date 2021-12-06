@@ -1,0 +1,48 @@
+<section class="hero-body">
+  <div>
+    <div class="tabs">
+      <ul>
+        <li class="is-active"> <a href="#">Perfil</a> </li>
+        {% if login == 'admin' %}
+        <li><a href="http://localhost/?pagina=users">Usuarios</a></li>
+        {% endif %}
+        <li><a href="http://localhost/?pagina=module">Modulos</a></li>
+        <li><a href="http://localhost/?pagina=logout">Modulos</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <p class="subtitle">
+        Cadastro de usuario
+      </p>
+      <form action="http://localhost/?pagina=addUser&metodo=create" class="form" method="POST">
+        <div class="field">
+          <label class="label">Login</label>
+          <div class="control">
+            <input required type="text" class="input" name="login">
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Senha primaria</label>
+          <div class="control">
+            <input required type="password" class="input" name="passwd">
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Senha secundaria/PIN</label>
+          <div class="control">
+            <input required type="password" class="input" name="pin">
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Email</label>
+          <div class="control">
+            <input required type="email" class="input" name="email">
+          </div>
+        </div>
+        
+        <button type="submit" class="button is-primary">Salvar</button>
+      </form>
+    </div>
+  </div>
+</section>
