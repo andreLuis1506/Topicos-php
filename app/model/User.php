@@ -29,9 +29,7 @@ class User{
     }
     
     throw new Exception("Usuario não encontrado");
-
   }
-  
 
   public static function getAll(){
     $connection = Connection::getConnection();

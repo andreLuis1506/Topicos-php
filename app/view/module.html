@@ -16,15 +16,15 @@
         {% for module in modules %}
         <li>
           <p>
-            <strong>{{module.titulo}}</strong>
+            <strong>{{module.titulo}} - {{module.id}} </strong>
             <a href="" class="button is-small is-info ml-5">Editar</a>
-            <a href="" class="button is-small is-danger ml-2">Excluir</a>
+            <a href="http://localhost/?pagina=module&metodo=delete&id={{module.id}}" class="button is-small is-danger ml-2">Excluir</a>
           </p>
           <hr>
         </li>
         {% endfor %}
       </ul>
-      <a href="" class="button is-primary mt-5">Adicionar Modulo</a>
+      <a href="http://localhost/?pagina=addModule" class="button is-primary mt-5">Adicionar Modulo</a>
     </div>
   </div>
 </section>
