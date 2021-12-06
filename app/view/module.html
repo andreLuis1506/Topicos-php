@@ -16,9 +16,15 @@
         {% for module in modules %}
         <li>
           <p>
-            <strong>{{module.titulo}} - {{module.id}} </strong>
-            <a href="" class="button is-small is-info ml-5">Editar</a>
-            <a href="http://localhost/?pagina=module&metodo=delete&id={{module.id}}" class="button is-small is-danger ml-2">Excluir</a>
+            <div class="columns box" style="width: 30rem;">
+              <div class="column is-7">
+                <strong>{{module.titulo}} - {{module.id}} </strong>
+              </div>
+              <div class="column is-5">
+                <a href="" class="button is-small is-info ml-5">Editar</a>
+                <a href="http://localhost/?pagina=module&metodo=delete&id={{module.id}}" class="button is-small is-danger ml-2">Excluir</a>
+              </div>
+            </div>
           </p>
           <hr>
         </li>
