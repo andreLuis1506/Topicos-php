@@ -19,8 +19,7 @@ class User{
 
     if($sql->rowCount()){
       $result = $sql->fetch();
-
-      if($result['senha'] === $this->password){
+      if(password_verify($this->password, $result['senha'])){
         var_dump($result);
         $_SESSION['id'] = $result['id'];
         $_SESSION['login'] = $result['login'];
