@@ -18,7 +18,7 @@ class Module{
     }
 
     if(!$result){
-      throw new Exception("Não foi encontrado nenhum modulo.");
+      return false;
     }
 
     return $result;
@@ -28,8 +28,6 @@ class Module{
 
     $module = new Module;
 
-    var_dump($this->title);
-    
     $this->setTitle($_POST['title']);
     $this->setDescription($_POST['description']);
     // $module->setCreated(date('m-d-Y h:i:s a', time()));
@@ -41,6 +39,28 @@ class Module{
   public function delete($id){
     $connection = Connection::getConnection();
     $sql = "DELETE FROM modulo WHERE id = '$id'";
+    $sql = $connection->prepare($sql);
+    $sql->execute();
+  }
+
+  public function getById($id){
+    $connection = Connection::getConnection();
+
+    $sql = "SELECT * FROM modulo WHERE id = '$id'";
+    $sql = $connection->prepare($sql);
+    $sql->execute();
+    
+    if($sql->rowCount()){
+      $result = $sql->fetchObject();
+        return $result;
+      }
+    
+  }
+
+  public function edit($id){
+    $connection = Connection::getConnection();
+
+    $sql = "UPDATE modulo SET titulo = '$this->title', descricao = '$this->description' WHERE id ='$id'";
     $sql = $connection->prepare($sql);
     $sql->execute();
   }
