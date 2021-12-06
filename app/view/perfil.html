@@ -1,0 +1,27 @@
+<section class="hero-body">
+  <div>
+    
+    <div class="tabs">
+      <ul>
+        <li class="is-active"> <a href="#">Perfil</a> </li>
+        {% if login == 'admin' %}
+        <li><a href="http://localhost/?pagina=users">Usuarios</a></li>
+        {% endif %}
+        <li><a href="http://localhost/?pagina=module">Modulos</a></li>
+      </ul>
+    </div>
+    
+    <div>
+      <h1 class="title">Bem vindo, {{login}}!</h1>
+      <hr>
+      <div>
+        <p class="subtitle">
+          Dados da conta
+        </p>
+        <p><strong>Email:</strong>{{email}}</p>
+
+        <a href="" class="button mt-4 is-primary">Mudar senha</a>
+      </div>
+    </div>
+  </div>
+</section>

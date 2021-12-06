@@ -1,0 +1,30 @@
+<section class="hero-body">
+  <div>
+    <div class="tabs">
+      <ul>
+        <li> <a href="http://localhost/?pagina=perfil">Perfil</a> </li>
+        {% if login == 'admin' %}
+        <li class="is-active"><a href="#">Usuarios</a> </li>
+        {% endif %}
+        <li><a href="http://localhost/?pagina=module">Modulos</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <p class="subtitle">Lista de usuarios</p>
+      <ul>
+        {% for user in users %}
+        <li>
+          <p>
+            <strong>{{user.login}}</strong>
+            <a href="" class="button is-small is-info ml-5">Editar</a>
+            <a href="" class="button is-small is-danger ml-2">Excluir</a>
+          </p>
+          <hr>
+        </li>
+        {% endfor %}
+      </ul>
+      <a href="" class="button is-primary mt-5">Adicionar ususario</a>
+    </div>
+  </div>
+</section>
