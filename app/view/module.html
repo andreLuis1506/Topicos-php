@@ -1,0 +1,45 @@
+<section class="hero-body">
+  <div>
+    <div class="tabs">
+      <ul>
+        <li><a href="http://localhost/?pagina=perfil">Perfil</a></li>
+        {% if login == 'admin' %}
+        <li><a href="http://localhost/?pagina=users">Usuarios</a></li>
+        {% endif %}
+        <li class="is-active"> <a href="#">Modulos</a> </li>
+      </ul>
+    </div>
+    {% if modules == false %}
+    <div>
+      <p class="subtitle">Lista de modulos</p>
+      <p class="has-text-grey-light">Nehum modulo encontrado...</p>
+    </div>
+    {% endif %} 
+    
+    {% if modules %}
+    <div>
+      <p class="subtitle">Lista de modulos</p>
+      <ul>
+        {% for module in modules %}
+        <li>
+          <p>
+            <div class="columns box" style="width: 30rem;">
+              <div class="column is-7">
+                <strong>{{module.titulo}} - {{module.id}} </strong> <br>
+                <span class="has-text-grey-light"> {{module.descricao}} </span>
+              </div>
+              <div class="column is-5">
+                <a href="http://localhost/?pagina=editModule&id={{module.id}}" class="button is-small is-info ml-5">Editar</a>
+                <a href="http://localhost/?pagina=module&metodo=delete&id={{module.id}}" class="button is-small is-danger ml-2">Excluir</a>
+              </div>
+            </div>
+          </p>
+          <hr>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+    <a href="http://localhost/?pagina=addModule" class="button is-primary mt-5">Adicionar Modulo</a>
+  </div>
+</section>

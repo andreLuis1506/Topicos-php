@@ -1,0 +1,44 @@
+<section class="hero-body">
+  <div>
+    <div class="tabs">
+      <ul>
+        <li> <a href="http://localhost/?pagina=perfil">Perfil</a> </li>
+        {% if login == 'admin' %}
+        <li class="is-active"><a href="#">Usuarios</a> </li>
+        {% endif %}
+        <li><a href="http://localhost/?pagina=module">Modulos</a></li>
+      </ul>
+    </div>
+    {% if users == false %}
+    <div>
+      <p class="subtitle">Lista de modulos</p>
+      <p class="has-text-grey-light">Nehum usuario encontrado...</p>
+    </div>
+    {% endif %} 
+
+    {% if users %}
+    <div>
+      <p class="subtitle">Lista de usuarios</p>
+      <ul>
+        {% for user in users %}
+        <li>
+          <p>
+            <div class="columns box" style="width: 30rem;">
+              <div class="column is-7">
+                <strong>{{user.login}}</strong>
+              </div>
+              <div class="column is-5">
+                <a href="" class="button is-small is-info ml-5">Editar</a>
+                <a href="" class="button is-small is-danger ml-2">Excluir</a>
+              </div>
+            </div>
+          </p>
+          <hr>
+        </li>
+        {% endfor %}
+      </ul>
+      <a href="" class="button is-primary mt-5">Adicionar ususario</a>
+    </div>
+    {% endif %}
+  </div>
+</section>
