@@ -1,7 +1,7 @@
 <?php
 
 class User{
-  private $id;
+  public $id;
   private $login;
   private $email;
   private $passaword;
@@ -21,7 +21,7 @@ class User{
 
     if($sql->rowCount()){
       $result = $sql->fetch();
-      if(password_verify($this->password, $result['senha'])){
+      if(password_verify($this->password, $result['senha']) and $result['status'] == '1'){
         $dateNow = date("Y-m-d H:i:s");
         $sql = "UPDATE `usuario` SET `ultimo_acesso` = '" . $dateNow . "' WHERE `usuario`.`id` = " . $result['id'] . " ";
         $sql = $connection->prepare($sql);
@@ -63,8 +63,45 @@ class User{
     $sql->execute();
   }
 
+  public function edit($id) {
+    $connection = Connection::getConnection();
+    $sql = "UPDATE `usuario` SET `senha` = '" . $this->password . "' WHERE `usuario`.`id` = " . $id . " ";
+    $sql = $connection->prepare($sql);
+    $sql->execute();
+  }
+
+  public function changeUserStatus() {
+    $connection = Connection::getConnection();
+    if($this->status == '0' ) {
+      $this->status = '1';
+    } else {
+      $this->status = '0';
+    }
+
+    $sql = "UPDATE `usuario` SET `status` = '" . $this->status . "' WHERE `usuario`.`id` = " . $this->id . " ";
+    $sql = $connection->prepare($sql);
+    $sql->execute();
+  }
+
   public function logout() {
-    # code...
+    $_SESSION['id'] = null;
+    $_SESSION['login'] = null;
+    $_SESSION['email'] = null;
+    $_SESSION['created'] = null;
+  }
+
+  public function getById($id){
+    $connection = Connection::getConnection();
+
+    $sql = "SELECT * FROM usuario WHERE id = '$id'";
+    $sql = $connection->prepare($sql);
+    $sql->execute();
+    
+    if($sql->rowCount()){
+      $result = $sql->fetchObject();
+        return $result;
+      }
+    
   }
 
   //get n set 
@@ -106,7 +143,7 @@ class User{
     $this->$pin = $pin;
   }
 
-  public function getPin($pin) {
+  public function getPin() {
     return $this->$pin;
   }
 
