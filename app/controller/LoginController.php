@@ -47,4 +47,9 @@ class LoginController{
       echo $e->getMessage();
     }
   }
+  public function logout(){
+    $user = new User;
+    $user->logout();
+    $this->index();
+  }
 }
