@@ -15,6 +15,8 @@ require_once 'app/controller/ModuleController.php';
 require_once 'app/controller/AddModuleController.php';
 require_once 'app/controller/EditModuleController.php';
 require_once 'app/controller/AddUserController.php';
+require_once 'app/controller/SetUserStatusController.php';
+require_once 'app/controller/EditUserController.php';
 
 require_once 'app/model/User.php';
 require_once 'app/model/Module.php';

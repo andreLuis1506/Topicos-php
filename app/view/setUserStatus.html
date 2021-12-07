@@ -1,0 +1,18 @@
+<section class="hero-body">
+  <div>
+    <div>
+      <p class="subtitle">
+        Mudar status do usuario
+      </p>
+      <form action="http://localhost/?pagina=setUserStatus&metodo=setStatus&id={{ user_id }}" class="form" method="POST">
+        <div class="field">
+          <label class="label">Entre com seu PIN para mudar o status do usuario</label>
+          <div class="control">
+            <input required type="password" class="input" name="pin">
+          </div>
+        </div>      
+        <button type="submit" class="button is-primary">Mudar</button>
+      </form>
+    </div>
+  </div>
+</section>
